@@ -1,32 +1,19 @@
-# [Django Berry PRO](https://github.com/app-generator/django-berry-dashboard-pro) `Starter`
+# [Django Material PRO](https://github.com/app-generator/django-material-dashboard-pro) `Starter`
 
-**Django** starter styled with **Berry Dashboard PRO**, a premium `Bootstrap 5` design from [CodedThemes](https://codedthemes.com/?ref=appseed)
+**Django** starter styled with **Berry Material PRO**, a premium `Bootstrap 5` design from [Creative-Tim](https://bit.ly/3fKQZaL)
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
 > **NOTE**: This product `requires a License` in order to access the theme. During the purchase, a `GitHub Access TOKEN` is provided. 
 
-- 👉 [Django Berry PRO](https://django-berry-dashboard-pro.onrender.com) - `LIVE Demo` on Render
+- 👉 [Django Material PRO](#) - `LIVE Demo` on Render (coming soon)
 - 🚀 [Support](https://appseed.us/support/) via `Email` & `Discord`
 
-<br />
-
-## Purchase Product via `GUMROAD`
-
-- 🛒 `Personal License`: **[PAY - $49](https://appseed.gumroad.com/l/django-berry-pro)** (payment link)
-  - Usage [terms](https://github.com/app-generator/license-personal): `Support & Updates: 6mo`
-  
-- 🛒 `StartUp License`: **[PAY - $99](https://appseed.gumroad.com/l/django-berry-pro-startup)** (payment link)
-  - Usage [terms](https://github.com/app-generator/license-startup): `Support & Updates: 12mo`
-  
-- 🛒 `company License`: **[PAY - $199](https://appseed.gumroad.com/l/django-berry-pro-company)** (payment link)
-  - Usage [terms](https://github.com/app-generator/license-personal): `Support & Updates: Lifetime`, **SaaS** products allowed
-  
 <br />
 
 ## Features: 
 
 - ✅ `Up-to-date Dependencies`
-- ✅ `Design`: [Django Theme Berry](https://github.com/app-generator/django-admin-berry-pro) - `PRO Version`
+- ✅ `Design`: [Django Theme Material](https://github.com/app-generator/django-admin-material-pro) - `PRO Version`
 - ✅ `Sections` covered by the design:
   - ✅ **Admin section** (reserved for superusers)
   - ✅ **Authentication**: `Django.contrib.AUTH`, Registration
@@ -36,7 +23,7 @@ The product is designed to deliver the best possible user experience with highly
 
 <br />
 
-![Berry Bootstrap 5 - Dark-Mode ready, Open-source Template.](https://user-images.githubusercontent.com/51070104/207091062-e805b36c-663a-4a01-acb8-9c55ab914f4f.jpg)
+![Material Dashboard BS5 - Modern Dashboard design by Creative-Tim.](https://user-images.githubusercontent.com/51070104/209104783-22f04139-8919-457c-b21d-7383d57f07b1.png)
 
 <br />
 
@@ -45,15 +32,15 @@ The product is designed to deliver the best possible user experience with highly
 > 👉 Download the code  
 
 ```bash
-$ git clone https://github.com/app-generator/django-berry-dashboard-pro.git
-$ cd django-berry-dashboard-pro
+$ git clone https://github.com/app-generator/django-material-dashboard-pro.git
+$ cd django-material-dashboard-pro
 ```
 
 <br />
 
 > Export `GITHUB_TOKEN` in the environment. The value is provided by AppSeed during purchase. 
 
-This is required because the project has a private REPO dependency: `github.com/app-generator/priv-django-admin-berry-pro`
+This is required because the project has a private REPO dependency: `github.com/app-generator/priv-django-admin-material-pro`
 
 ```bash
 $ export GITHUB_TOKEN='TOKEN_HERE'  # for Linux, Mac
@@ -114,21 +101,9 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 
 ## Screenshots
 
-![Berry Bootstrap 5 - Sign IN, Open-source Starter by AppSeed.](https://user-images.githubusercontent.com/51070104/207091198-2753246e-3d65-4aac-96de-0598a9a94788.jpg)
-
-<br />
-
-> [Django Admin Berry](https://github.com/app-generator/django-admin-berry) - `Icons` Page
-
-![Berry Bootstrap 5 - UI Icons page, Open-source Starter by AppSeed](https://user-images.githubusercontent.com/51070104/207091655-d5005e08-7ea0-4367-ab3a-2cd16934d2fd.jpg)
-
-<br />
-
-> [Django Admin Berry](https://github.com/app-generator/django-admin-berry) - `Colors` page
-
-![Berry Bootstrap 5 - Colors page, Open-source Starter by AppSeed](https://user-images.githubusercontent.com/51070104/207091441-942be542-2794-4bdb-a51d-85c75b5bc692.jpg)
+@ToDo
 
 <br />
 
 ---
-[Django Berry Dashboard](https://github.com/app-generator/django-berry-dashboard-pro) - Minimal **Django** starter provided by **[AppSeed](https://appseed.us/)**
+[Django Material PRO](https://github.com/app-generator/django-material-dashboard-pro) - Minimal **Django** starter provided by **[AppSeed](https://appseed.us/)**
