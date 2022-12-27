@@ -18,7 +18,7 @@ The product is designed to deliver the best possible user experience with highly
 - 🛒 `StartUp License`: **[PAY - $99](https://appseed.gumroad.com/l/django-mat-pro-startup)** (payment link)
   - Usage [terms](https://github.com/app-generator/license-startup): `Support & Updates: 12mo`
   
-- 🛒 `company License`: **[PAY - $199](https://appseed.gumroad.com/l/django-mat-pro-company)** (payment link)
+- 🛒 `Company License`: **[PAY - $199](https://appseed.gumroad.com/l/django-mat-pro-company)** (payment link)
   - Usage [terms](https://github.com/app-generator/license-personal): `Support & Updates: Lifetime`, **SaaS** products allowed
   
 <br />
