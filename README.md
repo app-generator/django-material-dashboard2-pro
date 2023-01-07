@@ -1,24 +1,27 @@
-# [Django Material2 PRO](https://github.com/app-generator/django-material-dashboard-pro) `Starter`
+# [Django Dashboard Material2 PRO](https://appseed.us/product/material-dashboard2-pro/django/)
 
-**Django** starter styled with **Material Design PRO**, a premium `Bootstrap 5` KIT from [Creative-Tim](https://bit.ly/3fKQZaL)
+**Django** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard2-pro/django/)**, a premium `Bootstrap 5` KIT from [Creative-Tim](https://bit.ly/3fKQZaL)
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
 > **NOTE**: This product `requires a License` in order to access the theme. During the purchase, a `GitHub Access TOKEN` is provided. 
 
-- 👉 [Django Material PRO](https://django-material-dashboard-pro.onrender.com) - `LIVE Demo` on Render
+- 👉 [Django Dashboard Material2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - `Product page`
+- 👉 [Django Dashboard Material2 PRO](https://django-material-dashboard-pro.onrender.com) - `LIVE Demo` on Render
 - 🚀 [Support](https://appseed.us/support/) via `Email` & `Discord`
 
-<br />
+<br /> 
 
 ## Features: 
 
 - ✅ `Up-to-date Dependencies`
-- ✅ `Design`: [Django Theme Material](https://github.com/app-generator/django-admin-material-pro) - `PRO Version`
+- ✅ `Design`: [Django Theme Material2](https://github.com/app-generator/django-admin-material2-pro) - `PRO Version`
 - ✅ `Sections` covered by the design:
   - ✅ **Admin section** (reserved for superusers)
   - ✅ **Authentication**: `Django.contrib.AUTH`, Registration
   - ✅ **All Pages** available in for ordinary users 
-- ✅ `Deployment-Ready` for Render 
+- ✅ `Docker`
+- 🚀 `Deployment` 
+  - `CI/CD` flow via `Render`
 
 <br />
 
@@ -31,8 +34,8 @@ The product is designed to deliver the best possible user experience with highly
 > 👉 Download the code  
 
 ```bash
-$ git clone https://github.com/app-generator/django-material-dashboard-pro.git
-$ cd django-material-dashboard-pro
+$ git clone https://github.com/app-generator/django-material-dashboard2-pro.git
+$ cd django-material-dashboard2-pro
 ```
 
 <br />
@@ -117,4 +120,4 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 <br />
 
 ---
-[Django Material PRO](https://github.com/app-generator/django-material-dashboard-pro) - Minimal **Django** starter provided by **[AppSeed](https://appseed.us/)**
+[Django Dashboard Material2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - Minimal **Django** starter provided by **[AppSeed](https://appseed.us/)**
