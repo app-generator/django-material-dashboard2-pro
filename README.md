@@ -1,4 +1,4 @@
-# [Django Material PRO](https://github.com/app-generator/django-material-dashboard-pro) `Starter`
+# [Django Material2 PRO](https://github.com/app-generator/django-material-dashboard-pro) `Starter`
 
 **Django** starter styled with **Material Design PRO**, a premium `Bootstrap 5` KIT from [Creative-Tim](https://bit.ly/3fKQZaL)
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
@@ -8,19 +8,6 @@ The product is designed to deliver the best possible user experience with highly
 - 👉 [Django Material PRO](https://django-material-dashboard-pro.onrender.com) - `LIVE Demo` on Render
 - 🚀 [Support](https://appseed.us/support/) via `Email` & `Discord`
 
-<br />
-
-## Purchase Product via `GUMROAD`
-
-- 🛒 `Personal License`: **[PAY - $49](https://appseed.gumroad.com/l/django-mat-pro)** (payment link)
-  - Usage [terms](https://github.com/app-generator/license-personal): `Support & Updates: 6mo`
-  
-- 🛒 `StartUp License`: **[PAY - $99](https://appseed.gumroad.com/l/django-mat-pro-startup)** (payment link)
-  - Usage [terms](https://github.com/app-generator/license-startup): `Support & Updates: 12mo`
-  
-- 🛒 `Company License`: **[PAY - $199](https://appseed.gumroad.com/l/django-mat-pro-company)** (payment link)
-  - Usage [terms](https://github.com/app-generator/license-personal): `Support & Updates: Lifetime`, **SaaS** products allowed
-  
 <br />
 
 ## Features: 
