@@ -1,12 +1,12 @@
-# [Django Material2 PRO](https://appseed.us/product/material-dashboard2-pro/django/)
+# [Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/)
 
 **Django** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard2-pro/django/)**, a premium `Bootstrap 5` KIT from [Creative-Tim](https://bit.ly/3fKQZaL)
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
 > **NOTE**: This product `requires a License` in order to access the theme. During the purchase, a `GitHub Access TOKEN` is provided. 
 
-- 🛒 [Django Material2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - `Product page` (contains payment links)
-- 👉 [Django Material2 PRO](https://django-material-dash2-pro.onrender.com) - `LIVE Demo` on Render
+- 🛒 [Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - `Product page` (contains payment links)
+- 👉 [Django Material Dash 2 PRO](https://django-material-dash2-pro.onrender.com) - `LIVE Demo` on Render
 - 🚀 [Support](https://appseed.us/support/) via `Email` & `Discord`
 
 <br /> 
@@ -120,4 +120,4 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 <br />
 
 ---
-[Django Material2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - Minimal **Django** starter provided by **[AppSeed](https://appseed.us/)**
+[Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - **Django** starter provided by **[AppSeed](https://appseed.us/)**
