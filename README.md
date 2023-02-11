@@ -1,6 +1,6 @@
 # [Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/)
 
-**Django** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard2-pro/django/)**, a premium `Bootstrap 5` KIT from [Creative-Tim](https://bit.ly/3fKQZaL)
+**Django** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard2-pro/django/)**, a premium `Bootstrap 5` KIT from [Creative-Tim](https://www.creative-tim.com/?AFFILIATE=128200)
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
 > **NOTE**: This product `requires a License` in order to access the theme. During the purchase, a `GitHub Access TOKEN` is provided. 
