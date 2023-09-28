@@ -1,0 +1,911 @@
+{% load i18n static admin_material %}
+
+<ul class="navbar-nav">
+
+  {% if request.user.is_superuser %}
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link text-white {% if 'dashboard' in parent %}active{% endif %} " aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round opacity-10">dashboard</i>
+      <span class="nav-link-text ms-2 ps-1">Dashboards</span>
+    </a>
+    <div class="collapse {% if 'dashboard' in parent %}show{% endif %}" id="dashboardsExamples">
+      <ul class="nav ">
+        <li class="nav-item {% if 'analytics' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'analytics' in segment %}active{% endif %}" href="{% url 'admin:index' %}">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Admin Section </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'admin:password_change' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Change Password </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'admin:logout' %}">
+            <span class="sidenav-mini-icon"> L </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Logout </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  {% endif %}
+
+  {% if not request.user.is_superuser and not request.user.is_authenticated %}
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link text-white {% if 'dashboard' in parent %}active{% endif %} " aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round opacity-10">dashboard</i>
+      <span class="nav-link-text ms-2 ps-1">Dashboards</span>
+    </a>
+    <div class="collapse {% if 'dashboard' in parent %}show{% endif %}" id="dashboardsExamples">
+      <ul class="nav ">
+        <li class="nav-item {% if 'analytics' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'analytics' in segment %}active{% endif %}" href="{% url 'admin:index' %}">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Admin Section </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#authExamples" class="nav-link text-white " aria-controls="authExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">content_paste</i>
+      <span class="nav-link-text ms-2 ps-1">Users Authentication</span>
+    </a>
+    <div class="collapse " id="authExamples">
+      <ul class="nav ">
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#signinExample">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Sign In <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="signinExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_login' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_login' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_login' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#signupExample">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Sign Up <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="signupExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_register' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_register' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_register' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  {% endif %}
+
+
+  {% admin_get_menu as app_list %}
+  {% if app_list %}
+      {% for app in app_list %}
+          {% if app.has_perms and not app.pinned %}
+            <li class="nav-item">
+              <a data-bs-toggle="collapse" href="#dashboards{{app.app_label}}" class="nav-link text-white {% if app_label != app.label and app.url not in request.path|urlencode  %} collapsed {% endif %} " aria-controls="dashboards{{app.app_label}}" role="button" aria-expanded="false">
+                <i class="material-icons-round opacity-10">dashboard</i>
+                <span class="nav-link-text ms-2 ps-1">{{ app.label|slice:10 }}{% if app.label|length > 10 %}..{% endif %}</span>
+              </a>
+              {% if app.models %}
+                <div 
+                  class="collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}" 
+                  role="list" 
+                  id="dashboards{{app.app_label}}"
+                  aria-expanded="{% if app_label == app.label or app.url in request.path|urlencode %}true{% else %}false{% endif %}">
+                  <ul class="nav">
+                    {% for model in app.models %}
+                      {% if model.url %}
+                        <li class="nav-item {% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}">
+                          <a class="nav-link text-white {% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}" href="{{ model.url }}">
+                            <span class="sidenav-mini-icon"> A </span>
+                            <span class="sidenav-normal ms-2 ps-1">{{ model.label }}</span>
+                          </a>
+                        </li>
+                      {% else %}
+                        <li class="nav-item list-unstyled">{{ model.label }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div> 
+              {% endif %}
+            </li>
+          {% endif %}
+      {% endfor %}
+  {% endif %}
+
+  {% if request.user.is_authenticated and not request.user.is_superuser %}
+  <li class="nav-item mb-2 mt-0">
+    <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-white" aria-controls="ProfileNav" role="button" aria-expanded="false">
+      <img src="{% static 'assets/img/team-3.jpg' %}" class="avatar">
+      <span class="nav-link-text ms-2 ps-1">Brooklyn Alice</span>
+    </a>
+    <div class="collapse" id="ProfileNav" style="">
+      <ul class="nav ">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'profile_overview' %}">
+            <span class="sidenav-mini-icon"> MP </span>
+            <span class="sidenav-normal  ms-3  ps-1"> My Profile </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'settings' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-3  ps-1"> Settings </span>
+          </a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'password_change' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-3  ps-1"> Change Password </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{% url 'logout' %}">
+            <span class="sidenav-mini-icon"> L </span>
+            <span class="sidenav-normal  ms-3  ps-1"> Logout </span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </li>
+  <hr class="horizontal light mt-0">
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link text-white {% if 'dashboard' in parent %}active{% endif %} " aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round opacity-10">dashboard</i>
+      <span class="nav-link-text ms-2 ps-1">Dashboards</span>
+    </a>
+    <div class="collapse {% if 'dashboard' in parent %}show{% endif %}" id="dashboardsExamples">
+      <ul class="nav ">
+        <li class="nav-item {% if 'analytics' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'analytics' in segment %}active{% endif %}" href="{% url 'index' %}">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Analytics </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'discover' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'discover' in segment %}active{% endif %}" href="{% url 'discover' %}">
+            <span class="sidenav-mini-icon"> D </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Discover </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'sales' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'sales' in segment %}active{% endif %}" href="{% url 'sales' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Sales </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'automotive' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'automotive' in segment %}active{% endif %}" href="{% url 'automotive' %}">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Automotive </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'smart_home' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'smart_home' in segment %}active{% endif %}" href="{% url 'smart_home' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Smart Home </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+
+  <li class="nav-item mt-3">
+    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder text-white">PAGES</h6>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link text-white {% if 'pages' in parent %}active{% endif %}" aria-controls="pagesExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">image</i>
+      <span class="nav-link-text ms-2 ps-1">Pages</span>
+    </a>
+    <div class="collapse {% if 'pages' in parent %}show{% endif %}" id="pagesExamples">
+      <ul class="nav ">
+        <li class="nav-item">
+          <a class="nav-link text-white {% if 'profile' in sub_parent %}active{% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Profile <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'profile' in sub_parent %}show{% endif %}" id="profileExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'profile_overview' in segment %}active{% endif %}" href="{% url 'profile_overview' %}">
+                  <span class="sidenav-mini-icon"> P </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Profile Overview </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'projects' in segment %}active{% endif %}" href="{% url 'projects' %}">
+                  <span class="sidenav-mini-icon"> A </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> All Projects </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'messages' in segment %}active{% endif %}" href="{% url 'messages' %}">
+                  <span class="sidenav-mini-icon"> M </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Messages </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white {% if 'users' in sub_parent %}active{% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#usersExample">
+            <span class="sidenav-mini-icon"> U </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Users <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'users' in sub_parent %}show{% endif %}" id="usersExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'reports' in segment %}active{% endif %}" href="{% url 'reports' %}">
+                  <span class="sidenav-mini-icon"> R </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Reports </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'new_user' in segment %}active{% endif %}" href="{% url 'new_user' %}">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> New User </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white {% if 'accounts' in sub_parent %}active{% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#accountExample">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Account <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'accounts' in sub_parent %}show{% endif %}" id="accountExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'settings' in segment %}active{% endif %}" href="{% url 'settings' %}">
+                  <span class="sidenav-mini-icon"> S </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Settings </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'billing' in segment %}active{% endif %}" href="{% url 'billing' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Billing </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'invoice' in segment %}active{% endif %}" href="{% url 'invoice' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Invoice </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'security' in segment %}active{% endif %}" href="{% url 'security' %}">
+                  <span class="sidenav-mini-icon"> S </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Security </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white {% if 'projects' in sub_parent %}active{% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#projectsExample">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Projects <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'projects' in sub_parent %}show{% endif %}" id="projectsExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'general' in segment %}active{% endif %}" href="{% url 'general' %}">
+                  <span class="sidenav-mini-icon"> G </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> General </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'timeline' in segment %}active{% endif %}" href="{% url 'timeline' %}">
+                  <span class="sidenav-mini-icon"> T </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Timeline </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'new_project' in segment %}active{% endif %}" href="{% url 'new_project' %}">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> New Project </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white {% if 'vr' in sub_parent %}active{% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#vrExamples">
+            <span class="sidenav-mini-icon"> V </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Virtual Reality <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'vr' in sub_parent %}show{% endif %}" id="vrExamples">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'vr_default' in segment %}active{% endif %}" href="{% url 'vr_default' %}">
+                  <span class="sidenav-mini-icon"> V </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> VR Default </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'vr_info' in segment %}active{% endif %}" href="{% url 'vr_info' %}">
+                  <span class="sidenav-mini-icon"> V </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> VR Info </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item {% if 'pricing' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'pricing' in segment %}active{% endif %}" href="{% url 'pricing' %}">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Pricing Page </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'rtl' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'rtl' in segment %}active{% endif %}" href="{% url 'rtl' %}">
+            <span class="sidenav-mini-icon"> R </span>
+            <span class="sidenav-normal  ms-2  ps-1"> RTL </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'widgets' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'widgets' in segment %}active{% endif %}" href="{% url 'widgets' %}">
+            <span class="sidenav-mini-icon"> W </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Widgets </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'charts' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'charts' in segment %}active{% endif %}" href="{% url 'charts' %}">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Charts </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'sweet_alerts' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'sweet_alerts' in segment %}active{% endif %}" href="{% url 'sweet_alerts' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Sweet Alerts </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'notifications' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'notifications' in segment %}active{% endif %}" href="{% url 'notifications' %}">
+            <span class="sidenav-mini-icon"> N </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Notifications </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link text-white {% if 'applications' in parent %}active{% endif %}" aria-controls="applicationsExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
+      <span class="nav-link-text ms-2 ps-1">Applications</span>
+    </a>
+    <div class="collapse {% if 'applications' in parent %}show{% endif %}" id="applicationsExamples">
+      <ul class="nav ">
+        <li class="nav-item {% if 'crm' in segment %}active{% endif %} ">
+          <a class="nav-link text-white {% if 'crm' in segment %}active{% endif %}" href="{% url 'crm' %}">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal  ms-2  ps-1"> CRM </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'kanban' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'kanban' in segment %}active{% endif %}" href="{% url 'kanban' %}">
+            <span class="sidenav-mini-icon"> K </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Kanban </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'wizard' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'wizard' in segment %}active{% endif %}" href="{% url 'wizard' %}">
+            <span class="sidenav-mini-icon"> W </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Wizard </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'datatables' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'datatables' in segment %}active{% endif %}" href="{% url 'datatables' %}">
+            <span class="sidenav-mini-icon"> D </span>
+            <span class="sidenav-normal  ms-2  ps-1"> DataTables </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'calendar' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'calendar' in segment %}active{% endif %}" href="{% url 'calendar' %}">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Calendar </span>
+          </a>
+        </li>
+        <li class="nav-item {% if 'stats' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'stats' in segment %}active{% endif %}" href="{% url 'stats' %}">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Stats </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link text-white {% if 'ecommerce' in parent %}active{% endif %} " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">shopping_basket</i>
+      <span class="nav-link-text ms-2 ps-1">Ecommerce</span>
+    </a>
+    <div class="collapse {% if 'ecommerce' in parent %}show{% endif %}" id="ecommerceExamples">
+      <ul class="nav ">
+        <li class="nav-item">
+          <a class="nav-link text-white {% if 'products' in sub_parent %}active{% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#productsExample">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Products <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'products' in sub_parent %}show{% endif %}" id="productsExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'new_product' in segment %}active{% endif %}" href="{% url 'new_product' %}">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> New Product </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'edit_product' in segment %}active{% endif %}" href="{% url 'edit_product' %}">
+                  <span class="sidenav-mini-icon"> E </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Edit Product </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'product_page' in segment %}active{% endif %}" href="{% url 'product_page' %}">
+                  <span class="sidenav-mini-icon"> P </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Product Page </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'products_list' in segment %}active{% endif %}" href="{% url 'products_list' %}">
+                  <span class="sidenav-mini-icon"> P </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Products List </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white {% if 'orders' in sub_parent %}active{% endif %} " data-bs-toggle="collapse" aria-expanded="false" href="#ordersExample">
+            <span class="sidenav-mini-icon"> O </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Orders <b class="caret"></b></span>
+          </a>
+          <div class="collapse {% if 'orders' in sub_parent %}show{% endif %} " id="ordersExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'order_list' in segment %}active{% endif %}" href="{% url 'order_list' %}">
+                  <span class="sidenav-mini-icon"> O </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Order List </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white {% if 'order_details' in segment %}active{% endif %}" href="{% url 'order_details' %}">
+                  <span class="sidenav-mini-icon"> O </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Order Details </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item {% if 'referral' in segment %}active{% endif %}">
+          <a class="nav-link text-white {% if 'referral' in segment %}active{% endif %}" href="{% url 'referral' %}">
+            <span class="sidenav-mini-icon"> R </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Referral </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#authExamples" class="nav-link text-white " aria-controls="authExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">content_paste</i>
+      <span class="nav-link-text ms-2 ps-1">Authentication</span>
+    </a>
+    <div class="collapse " id="authExamples">
+      <ul class="nav ">
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#signinExample">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Sign In <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="signinExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_login' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_login' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_login' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#signupExample">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Sign Up <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="signupExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_register' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_register' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_register' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#resetExample">
+            <span class="sidenav-mini-icon"> R </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Reset Password <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="resetExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_reset' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_reset' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_reset' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#lockExample">
+            <span class="sidenav-mini-icon"> L </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Lock <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="lockExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_lock' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_lock' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_lock' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#StepExample">
+            <span class="sidenav-mini-icon"> 2 </span>
+            <span class="sidenav-normal  ms-2  ps-1"> 2-Step Verification <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="StepExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'basic_verification' %}">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Basic </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'cover_verification' %}">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Cover </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'illustration_verification' %}">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Illustration </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#errorExample">
+            <span class="sidenav-mini-icon"> E </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Error <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="errorExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'error_404' %}">
+                  <span class="sidenav-mini-icon"> E </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Error 404 </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="{% url 'error_500' %}">
+                  <span class="sidenav-mini-icon"> E </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Error 500 </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <hr class="horizontal light" />
+    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder text-white">DOCS</h6>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#basicExamples" class="nav-link text-white " aria-controls="basicExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">upcoming</i>
+      <span class="nav-link-text ms-2 ps-1">Basic</span>
+    </a>
+    <div class="collapse " id="basicExamples">
+      <ul class="nav ">
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#gettingStartedExample">
+            <span class="sidenav-mini-icon"> G </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Getting Started <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="gettingStartedExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/quick-start/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> Q </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Quick Start </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/license/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> L </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> License </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Contents </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/build-tools/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> B </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Build Tools </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " data-bs-toggle="collapse" aria-expanded="false" href="#foundationExample">
+            <span class="sidenav-mini-icon"> F </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Foundation <b class="caret"></b></span>
+          </a>
+          <div class="collapse " id="foundationExample">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/colors/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Colors </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/grid/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> G </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Grid </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/typography/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> T </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Typography </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/icons/material-dashboard?AFFILIATE=128200" target="_blank">
+                  <span class="sidenav-mini-icon"> I </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Icons </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a data-bs-toggle="collapse" href="#componentsExamples" class="nav-link text-white " aria-controls="componentsExamples" role="button" aria-expanded="false">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">view_in_ar</i>
+      <span class="nav-link-text ms-2 ps-1">Components</span>
+    </a>
+    <div class="collapse " id="componentsExamples">
+      <ul class="nav ">
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/alerts/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Alerts </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/badge/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> B </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Badge </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/buttons/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> B </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Buttons </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/cards/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Card </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/carousel/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Carousel </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/collapse/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Collapse </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/dropdowns/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> D </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Dropdowns </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/forms/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> F </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Forms </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/modal/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> M </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Modal </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/navs/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> N </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Navs </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/navbar/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> N </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Navbar </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/pagination/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Pagination </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/popovers/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Popovers </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/progress/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> P </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Progress </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/spinners/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> S </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Spinners </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/tables/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> T </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Tables </span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-white " href="https://www.creative-tim.com/learning-lab/bootstrap/tooltips/material-dashboard?AFFILIATE=128200" target="_blank">
+            <span class="sidenav-mini-icon"> T </span>
+            <span class="sidenav-normal  ms-2  ps-1"> Tooltips </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://appseed.us/support/" target="_blank">
+      <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">receipt_long</i>
+      <span class="nav-link-text ms-2 ps-1">Support</span>
+    </a>
+  </li>
+  {% endif %}
+</ul>

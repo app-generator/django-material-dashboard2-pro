@@ -1,0 +1,94 @@
+{% extends 'layouts/base-fullscreen.html' %}
+{% load static %}
+
+{% block body %}bg-gray-200{% endblock body %}
+
+{% block content %}
+
+  <main class="main-content  mt-0">
+    <div class="page-header align-items-start min-vh-90 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1627850991511-fd5640f0b472?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-4 col-md-7 mx-auto">
+            <div class="card z-index-0 my-auto">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-success shadow-success border-radius-lg py-3 text-center">
+                  <h4 class="font-weight-bolder text-white mb-0 mt-1">Change password</h4>
+                  {% comment %} <p class="text-white mb-1">You will receive an e-mail in maximum 60 seconds</p> {% endcomment %}
+                </div>
+              </div>
+              <div class="card-body">
+                <form role="form" method="post">
+                  {% csrf_token %}
+
+                  {% for field in form %}
+                    <div class="input-group input-group-static mb-3">
+                      <label>{{ field.label }}</label>
+                      <input 
+                        type="password" 
+                        class="form-control" 
+                        placeholder="•••••••••••••"
+                        name="{{ field.name }}"
+                      >
+                    </div>
+                    <small class="text-danger">{{ field.errors }}</small>
+                  {% endfor %}
+                  <div class="text-center">
+                    <button type="submit" class="btn bg-gradient-dark btn-lg w-100 my-4 mb-2">Change</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer my-auto py-2 ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-12 col-md-6 my-auto">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              © <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              made with <i class="fa fa-heart" aria-hidden="true"></i> by
+              <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+              for a better web.
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+{% endblock content %}
+
+{% block extra_js %}
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+{% endblock extra_js %}
