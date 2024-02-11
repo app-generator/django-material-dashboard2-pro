@@ -4,7 +4,7 @@
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
 - 🛒 [Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - `Product page` 
-- 👉 [Django Material Dash 2 PRO](https://django-mat-dash2-enh-latest.onrender.com/) - `LIVE Demo`
+- 👉 [Django Material Dash 2 PRO](https://django-material-dash2-pro.onrender.com/) - `LIVE Demo`
 
 <br />
 
@@ -33,8 +33,8 @@ The product is designed to deliver the best possible user experience with highly
 > **Step 1** - Download the [code](https://appseed.us/product/material-dashboard2-pro/django/) and unzip the sources (requires a `purchase`). 
 
 ```bash
-$ unzip django-material-dashboard2-enh.zip
-$ cd django-material-dashboard2-enh
+$ unzip django-material-dashboard2-pro.zip
+$ cd django-material-dashboard2-pro
 ```
 
 <br />
@@ -79,8 +79,8 @@ The meaning of each variable can be found below:
 > - Download the [code](https://appseed.us/product/material-dashboard2-pro/django/) and unzip the sources (requires a `purchase`). 
 
 ```bash
-$ unzip django-material-dashboard2-enh.zip
-$ cd django-material-dashboard2-enh
+$ unzip django-material-dashboard2-pro.zip
+$ cd django-material-dashboard2-pro
 ```
 
 <br />
