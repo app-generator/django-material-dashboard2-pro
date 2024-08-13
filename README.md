@@ -21,10 +21,9 @@ The product is designed to deliver the best possible user experience with highly
 - Charts
 - Celery
 - File Manager
-- i18n (internationalization) 
 - `Docker`
 
-![Django Material Dash2 PRO](https://github.com/app-generator/priv-django-material-dashboard2-enh/assets/51070104/97e54510-fe5b-4b32-988e-c18795ea9c26)
+![Django Material Dash2 PRO](https://github.com/user-attachments/assets/c75c6e67-a940-4d56-9855-070f901ab5ab)
 
 <br />
 
