@@ -3,7 +3,7 @@
 **Django** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard2-pro/django/)**, a premium `Bootstrap 5` KIT from `Creative-Tim`
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
 
-- 🛒 [Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - `Product page` 
+- 👉 [Django Material Dash 2 PRO](https://appseed.us/product/material-dashboard2-pro/django/) - `Product page` 
 - 👉 [Django Material Dash 2 PRO](https://django-material-dash2-pro.onrender.com/) - `LIVE Demo`
 
 <br />
@@ -24,7 +24,7 @@ The product is designed to deliver the best possible user experience with highly
 - i18n (internationalization) 
 - `Docker`
 
-![Django Material Dash2 PRO](https://github.com/user-attachments/assets/361feca4-22d1-435f-bc7a-ded983a77fa7)
+![Django Material Dash2 PRO](https://github.com/app-generator/priv-django-material-dashboard2-enh/assets/51070104/97e54510-fe5b-4b32-988e-c18795ea9c26)
 
 <br />
 

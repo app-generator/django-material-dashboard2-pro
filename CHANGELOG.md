@@ -1,5 +1,19 @@
 # Change Log
 
+## [1.0.7] 2024-08-13
+### Changes
+
+- Apps Changes
+  - DataTables
+  - Charts
+  - File Manager
+  - Extended Profiles
+
+## [1.0.6] 2024-08-09
+### Changes
+
+- Fix #42: Fontawesome link now returning 403 Forbidden
+
 ## [1.0.5] 2024-02-27
 ### Changes
 
