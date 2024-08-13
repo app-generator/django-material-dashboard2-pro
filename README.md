@@ -1,4 +1,4 @@
-# [Django Material Dash2 PRO](https://appseed.us/product/material-dashboard2-pro/django/)
+# [Django Material BS5 PRO](https://appseed.us/product/material-dashboard2-pro/django/)
 
 **Django** starter styled with **[Material Dashboard PRO](https://appseed.us/product/material-dashboard2-pro/django/)**, a premium `Bootstrap 5` KIT from `Creative-Tim`
 The product is designed to deliver the best possible user experience with highly customizable feature-rich pages. 
