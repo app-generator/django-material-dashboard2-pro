@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.0.8] 2024-12-04
+### Changes
+
+- Bump UI: Material Dashboard PRO 3.1.0, release date: `2024-10-21`
+- Update Product Links
+  - 👉 [Django Material Dashboard PRO](https://app-generator.dev/product/material-dashboard-pro/django/) - `Product Page`
+  - 👉 [Django Material Dashboard PRO](https://django-material-dash2-pro.onrender.com/) - `LIVE Demo` 
+  - 👉 [Django Material Dashboard PRO Documentation](https://app-generator.dev/docs/products/django/material-dashboard-pro/index.html) - `Complete Information` and Support Links
+
+
 ## [1.0.7] 2024-08-13
 ### Changes
 
